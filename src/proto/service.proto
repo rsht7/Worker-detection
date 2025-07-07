@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package surveillance;
+
+// ----- Message Definitions -----
+
+// Request from AI engine for a specific camera's zone data
+message ZoneRequest {
+  string camera_id = 1;
+}
+
+// Complete response containing multiple zones
+message ZoneData {
+  string camera_id = 1;
+  repeated Zone zones = 2;
+}
+
+// Represents a single zone with polygon coordinates and rules
+message Zone {
+  string zone_id = 1; // Unique identifier for the zone
+  bytes numpy_mask = 2; // Numpy array (serialized via np.save) for the zone mask
+  repeated string rules = 3; // E.g., ["person_only", "no_vehicle"]
+}
+
+// Alert sent from AI engine to backend
+message AlertData {
+  string camera_id = 1;
+  string zone_id = 2; // Which zone triggered this alert
+  string alert_type = 3; // e.g., "person", "vehicle"
+  int32 confidence = 4; // Integer percentage, e.g., 85 = 85%
+  string timestamp = 5; // ISO 8601 preferred
+  bytes image = 6; // Annotated image (JPEG/PNG)
+}
+
+// Acknowledgement for alert receipt
+message Ack {
+  bool success = 1;
+  string message = 2;
+}
+
+// ----- gRPC Service -----
+
+service Surveillance {
+
+  // AI polls this to get zones + rules for a camera
+  rpc GetZoneData(ZoneRequest) returns (ZoneData);
+
+  // AI pushes detected alerts to backend
+  rpc SendAlert(AlertData) returns (Ack);
+}
