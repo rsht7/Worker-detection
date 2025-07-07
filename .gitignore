@@ -16,6 +16,7 @@ Thumbs.db
 # Logs and output
 *.log
 *.csv
+*.json
 
 
 # Model weights

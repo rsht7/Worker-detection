@@ -112,7 +112,7 @@ class HumanDetection:
                 print("Failed to grab frame.")
                 break
 
-            results = self.model.predict(source=frame, classes=[0], conf=0.3, verbose=False)
+            results = self.model.predict(source=frame, classes=[0], conf=0.55, verbose=False)
             annotated_frame = results[0].plot()
 
             # Draw zone rectangle
