@@ -22,8 +22,9 @@ class GRPCBridge(service_pb2_grpc.SurveillanceServicer):
             "rules": request.rules,
             "confidence": request.confidence,
             "timestamp": request.timestamp,
-            # TODO: store image first and send path to push alert
-            "image": request.image,
+            # TODO: store image first and send path to alert
+            # "image": request.image,
         }
+        # TODO: store in sqlite
         self.store.push_alert(request.camera_id, alert_dict)
         return service_pb2.Ack(success=True)
