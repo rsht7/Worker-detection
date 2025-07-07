@@ -5,14 +5,13 @@ import json
 
 
 def create_frontend_api(store):
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path="/images", static_folder="./static/images")
 
     @app.route("/zone", methods=["POST"])
     def receive_zone():
         data = request.get_json()
         if not data or "camera_id" not in data or "zones" not in data:
             return jsonify({"status": "error", "message": "Invalid input"}), 400
-
 
         # convert data to following format
         # {
