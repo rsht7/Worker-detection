@@ -1,0 +1,25 @@
+# Python virtual environment
+yolov8-h/
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor folders
+.vscode/
+.idea/
+
+# Logs and output
+*.log
+*.txt
+*.json
+*.csv
+
+
+# Model weights
+*.pt
+*.onnx
