@@ -18,7 +18,7 @@ message ZoneData {
 // Represents a single zone with polygon coordinates and rules
 message Zone {
   int32 zone_id = 1; // Unique identifier for the zone
-  bytes numpy_mask = 2; // Numpy array (serialized via np.save) for the zone mask
+  repeated int32 zone_coord = 2; // Zone coordinates and data array
   repeated int32 rules = 3; // E.g., [0, 1]
 }
 
