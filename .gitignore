@@ -4,6 +4,7 @@ yolov8-h/
 # Byte-compiled / cache files
 __pycache__/
 *.py[cod]
+*/**/__pycache__/
 
 # OS files
 .DS_Store
