@@ -31,22 +31,22 @@ class Zone(_message.Message):
     def __init__(self, zone_id: _Optional[int] = ..., numpy_mask: _Optional[bytes] = ..., rules: _Optional[_Iterable[int]] = ...) -> None: ...
 
 class AlertData(_message.Message):
-    __slots__ = ("camera_id", "zone_id", "alert_type", "rule", "confidence", "timestamp", "image")
+    __slots__ = ("camera_id", "zone_id", "alert_type", "rules", "confidence", "timestamp", "image")
     CAMERA_ID_FIELD_NUMBER: _ClassVar[int]
     ZONE_ID_FIELD_NUMBER: _ClassVar[int]
     ALERT_TYPE_FIELD_NUMBER: _ClassVar[int]
-    RULE_FIELD_NUMBER: _ClassVar[int]
+    RULES_FIELD_NUMBER: _ClassVar[int]
     CONFIDENCE_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
     camera_id: int
     zone_id: int
     alert_type: int
-    rule: int
+    rules: _containers.RepeatedScalarFieldContainer[int]
     confidence: int
     timestamp: str
     image: bytes
-    def __init__(self, camera_id: _Optional[int] = ..., zone_id: _Optional[int] = ..., alert_type: _Optional[int] = ..., rule: _Optional[int] = ..., confidence: _Optional[int] = ..., timestamp: _Optional[str] = ..., image: _Optional[bytes] = ...) -> None: ...
+    def __init__(self, camera_id: _Optional[int] = ..., zone_id: _Optional[int] = ..., alert_type: _Optional[int] = ..., rules: _Optional[_Iterable[int]] = ..., confidence: _Optional[int] = ..., timestamp: _Optional[str] = ..., image: _Optional[bytes] = ...) -> None: ...
 
 class Ack(_message.Message):
     __slots__ = ("success",)

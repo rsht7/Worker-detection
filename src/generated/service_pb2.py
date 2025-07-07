@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x0csurveillance\" \n\x0bZoneRequest\x12\x11\n\tcamera_id\x18\x01 \x01(\x05\"@\n\x08ZoneData\x12\x11\n\tcamera_id\x18\x01 \x01(\x05\x12!\n\x05zones\x18\x02 \x03(\x0b\x32\x12.surveillance.Zone\":\n\x04Zone\x12\x0f\n\x07zone_id\x18\x01 \x01(\x05\x12\x12\n\nnumpy_mask\x18\x02 \x01(\x0c\x12\r\n\x05rules\x18\x03 \x03(\x05\"\x87\x01\n\tAlertData\x12\x11\n\tcamera_id\x18\x01 \x01(\x05\x12\x0f\n\x07zone_id\x18\x02 \x01(\x05\x12\x12\n\nalert_type\x18\x03 \x01(\x05\x12\x0c\n\x04rule\x18\x04 \x01(\x05\x12\x12\n\nconfidence\x18\x05 \x01(\x05\x12\x11\n\ttimestamp\x18\x06 \x01(\t\x12\r\n\x05image\x18\x07 \x01(\x0c\"\x16\n\x03\x41\x63k\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\x89\x01\n\x0cSurveillance\x12@\n\x0bGetZoneData\x12\x19.surveillance.ZoneRequest\x1a\x16.surveillance.ZoneData\x12\x37\n\tSendAlert\x12\x17.surveillance.AlertData\x1a\x11.surveillance.Ackb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x0csurveillance\" \n\x0bZoneRequest\x12\x11\n\tcamera_id\x18\x01 \x01(\x05\"@\n\x08ZoneData\x12\x11\n\tcamera_id\x18\x01 \x01(\x05\x12!\n\x05zones\x18\x02 \x03(\x0b\x32\x12.surveillance.Zone\":\n\x04Zone\x12\x0f\n\x07zone_id\x18\x01 \x01(\x05\x12\x12\n\nnumpy_mask\x18\x02 \x01(\x0c\x12\r\n\x05rules\x18\x03 \x03(\x05\"\x88\x01\n\tAlertData\x12\x11\n\tcamera_id\x18\x01 \x01(\x05\x12\x0f\n\x07zone_id\x18\x02 \x01(\x05\x12\x12\n\nalert_type\x18\x03 \x01(\x05\x12\r\n\x05rules\x18\x04 \x03(\x05\x12\x12\n\nconfidence\x18\x05 \x01(\x05\x12\x11\n\ttimestamp\x18\x06 \x01(\t\x12\r\n\x05image\x18\x07 \x01(\x0c\"\x16\n\x03\x41\x63k\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\x89\x01\n\x0cSurveillance\x12@\n\x0bGetZoneData\x12\x19.surveillance.ZoneRequest\x1a\x16.surveillance.ZoneData\x12\x37\n\tSendAlert\x12\x17.surveillance.AlertData\x1a\x11.surveillance.Ackb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -38,9 +38,9 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_ZONE']._serialized_start=131
   _globals['_ZONE']._serialized_end=189
   _globals['_ALERTDATA']._serialized_start=192
-  _globals['_ALERTDATA']._serialized_end=327
-  _globals['_ACK']._serialized_start=329
-  _globals['_ACK']._serialized_end=351
-  _globals['_SURVEILLANCE']._serialized_start=354
-  _globals['_SURVEILLANCE']._serialized_end=491
+  _globals['_ALERTDATA']._serialized_end=328
+  _globals['_ACK']._serialized_start=330
+  _globals['_ACK']._serialized_end=352
+  _globals['_SURVEILLANCE']._serialized_start=355
+  _globals['_SURVEILLANCE']._serialized_end=492
 # @@protoc_insertion_point(module_scope)
