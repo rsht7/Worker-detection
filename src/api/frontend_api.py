@@ -7,7 +7,7 @@ from utils.frontend_api_utils import convert_zone_json_to_array
 from generated import service_pb2
 
 def create_frontend_api(store: MemoryStore):
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path="/images", static_folder="./static/images")
 
     @app.route("/zone", methods=["POST"])
     def receive_zone():
