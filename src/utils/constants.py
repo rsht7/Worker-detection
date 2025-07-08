@@ -1,5 +1,3 @@
-# utils/constants.py
-
 from enum import IntEnum
 
 
