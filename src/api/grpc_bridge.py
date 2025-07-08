@@ -1,5 +1,6 @@
 from api.memory_store import MemoryStore
 from generated import service_pb2, service_pb2_grpc
+from api.img_save import save_alert_image
 
 
 class GRPCBridge(service_pb2_grpc.SurveillanceServicer):
@@ -11,10 +12,21 @@ class GRPCBridge(service_pb2_grpc.SurveillanceServicer):
         if not data:
             return service_pb2.ZoneData(camera_id=request.camera_id, zones=[])
 
-        return service_pb2.ZoneData(**data)
+        zone_list = []
+        for zone in data["zones"]:
+            zone_proto = service_pb2.Zone(
+                zone_id=zone["zone_id"],
+                zone_coord=zone["zone_array"],
+                rules=zone.get("rules", [])
+            )
+            zone_list.append(zone_proto)
+
+        return service_pb2.ZoneData(camera_id=request.camera_id, zones=zone_list)
 
     def SendAlert(self, request, context):
         print(f"[gRPC] Alert received: {request.camera_id}, {request.alert_type}")
+
+        img_path = save_alert_image(request.timestamp, request.camera_id, request.image)
         alert_dict = {
             "camera_id": request.camera_id,
             "zone_id": request.zone_id,
@@ -23,7 +35,7 @@ class GRPCBridge(service_pb2_grpc.SurveillanceServicer):
             "confidence": request.confidence,
             "timestamp": request.timestamp,
             # TODO: store image first and send path to alert
-            # "image": request.image,
+            "image": img_path,
         }
         # TODO: store in sqlite
         self.store.push_alert(request.camera_id, alert_dict)
