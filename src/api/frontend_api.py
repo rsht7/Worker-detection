@@ -2,6 +2,7 @@
 
 from flask import Flask, request, Response, jsonify
 import json
+from utils.constants import Rule
 
 
 def create_frontend_api(store):
@@ -34,6 +35,14 @@ def create_frontend_api(store):
 
         # store.set_zone_data(CAMERAID, CHANGED DATA)
         return jsonify({"status": "ok", "message": "Zone data stored"})
+
+    @app.route("/rules", methods=["GET"])
+    def get_rules():
+        rules = [
+            {"ruleID": rule.value, "name": rule.name.replace("_", " ").title()}
+            for rule in Rule
+        ]
+        return jsonify(rules)
 
     @app.route("/alerts/<camera_id>")
     def alert_stream(camera_id):
