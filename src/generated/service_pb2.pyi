@@ -21,14 +21,14 @@ class ZoneData(_message.Message):
     def __init__(self, camera_id: _Optional[int] = ..., zones: _Optional[_Iterable[_Union[Zone, _Mapping]]] = ...) -> None: ...
 
 class Zone(_message.Message):
-    __slots__ = ("zone_id", "numpy_mask", "rules")
+    __slots__ = ("zone_id", "zone_coord", "rules")
     ZONE_ID_FIELD_NUMBER: _ClassVar[int]
-    NUMPY_MASK_FIELD_NUMBER: _ClassVar[int]
+    ZONE_COORD_FIELD_NUMBER: _ClassVar[int]
     RULES_FIELD_NUMBER: _ClassVar[int]
     zone_id: int
-    numpy_mask: bytes
+    zone_coord: _containers.RepeatedScalarFieldContainer[int]
     rules: _containers.RepeatedScalarFieldContainer[int]
-    def __init__(self, zone_id: _Optional[int] = ..., numpy_mask: _Optional[bytes] = ..., rules: _Optional[_Iterable[int]] = ...) -> None: ...
+    def __init__(self, zone_id: _Optional[int] = ..., zone_coord: _Optional[_Iterable[int]] = ..., rules: _Optional[_Iterable[int]] = ...) -> None: ...
 
 class AlertData(_message.Message):
     __slots__ = ("camera_id", "zone_id", "alert_type", "rules", "confidence", "timestamp", "image")
