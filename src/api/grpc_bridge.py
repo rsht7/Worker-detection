@@ -12,7 +12,16 @@ class GRPCBridge(service_pb2_grpc.SurveillanceServicer):
         if not data:
             return service_pb2.ZoneData(camera_id=request.camera_id, zones=[])
 
-        return service_pb2.ZoneData(**data)
+        zone_list = []
+        for zone in data["zones"]:
+            zone_proto = service_pb2.Zone(
+                zone_id=zone["zone_id"],
+                zone_coord=zone["zone_array"],
+                rules=zone.get("rules", [])
+            )
+            zone_list.append(zone_proto)
+
+        return service_pb2.ZoneData(camera_id=request.camera_id, zones=zone_list)
 
     def SendAlert(self, request, context):
         print(f"[gRPC] Alert received: {request.camera_id}, {request.alert_type}")
