@@ -1,11 +1,11 @@
 import os
 import cv2
 from ultralytics import YOLO
-from logger import JSONLogger
-from zone_checker import calculate_overlap
+from ai_engine.logger import JSONLogger
+from ai_engine.zone_checker import calculate_overlap
 
 # Define the zone rectangle (from backend)
-ZONE_RECT = [0, 0, 300, 600]  # Example: top-left (x1, y1), bottom-right (x2, y2)
+ZONE_RECT = [20, 0, 200, 400]  # Example: top-left (x1, y1), bottom-right (x2, y2)
 
 class HumanDetection:
     def __init__(self, model_path, log_path, rtsp_url):
@@ -65,7 +65,8 @@ class HumanDetection:
         cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    rtsp_url = 0  # Replace with RTSP if needed
+    rtsp_url = 'rtsp://172.20.10.45:8554/mystream'
+      # Replace with RTSP if needed
     # model_path = ".../models/yolov8n.pt"
     model_path = os.path.abspath("models/yolov8n.pt")
     log_path = os.path.abspath("data-op/bounding_boxes2.json")
